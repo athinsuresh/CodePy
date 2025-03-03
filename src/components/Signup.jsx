@@ -23,8 +23,10 @@ const SignUpPage = () => {
     formData.append("profilePicture", profilePicture);
     formData.append("proficiency", proficiency);
 
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://codepy-qio0.onrender.com/";
+
     try {
-        const result = await axios.post("http://localhost:3001/register", formData, {
+        const result = await axios.post(`${API_BASE_URL}/register`, formData, {
             headers: { "Content-Type": "multipart/form-data" }
         });
 
