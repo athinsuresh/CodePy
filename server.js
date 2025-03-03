@@ -12,7 +12,7 @@ import connectDB from "./config/connectDB.js"; // Ensure this path is correct
 
 import dotenv from "dotenv";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 dotenv.config();
 
 console.log("🔍 MONGO_URI:", process.env.MONGO_URI); // ✅ Debug if env var is loaded
