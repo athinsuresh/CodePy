@@ -7,28 +7,23 @@ import userModel from "./models/user.js"; // Ensure this file uses ES6 exports
 import multer from "multer";
 import path from "path";
 import jwt from "jsonwebtoken"; 
+import connectDB from "./config/connectDB.js"; // Ensure this path is correct
 
 
 import dotenv from "dotenv";
 
-
+const PORT = process.env.PORT || 5000;
 dotenv.config();
 
 console.log("🔍 MONGO_URI:", process.env.MONGO_URI); // ✅ Debug if env var is loaded
-const connectDB = async () => {
-    try {
-      await mongoose.connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-      console.log("✅ MongoDB Connected Successfully");
-    } catch (error) {
-      console.error("❌ MongoDB Connection Error:", error);
-      process.exit(1);
-    }
-  };
- 
-export default connectDB;  
+(async () => {
+    console.log("🛠 Connecting to Database...");
+    await connectDB();
+  })();
+  
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
 
 const app = express();
 app.use((req, res, next) => {
@@ -84,7 +79,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 5000;
+
 
 // Function to evaluate the user's code safely
 const executePythonCode = (code, callback) => {
