@@ -1,0 +1,97 @@
+/* CodeSnippet.css */
+.code-snippet-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: #333;
+    margin-top: 10px;
+    height: 500px!important;
+    overflow-y: auto!important;
+  }
+  
+  .code-header {
+    background-color: #0b0149; /* Darker header background */
+    color: white; /* White text for header */
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #ccc;
+  }
+  
+  .language-tag {
+    font-size: 0.8rem;
+    color: #eee; /* Lighter text for language tag */
+    text-transform: uppercase;
+    margin-left: 0.5rem;
+  }
+  
+  .copy-button {
+    background-color: #0b0149;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    margin-top: 13px;
+  }
+  
+  .copy-button:hover {
+    background-color: #45a049;
+  }
+  
+  .copy-button:disabled {
+    background-color: #ccc;
+    cursor: default;
+  }
+  
+  .code-block *{
+    color: #fff!important; /* White text for code */
+    padding: 1rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 0;
+    margin-top: 1px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+  }
+
+  /* Scrollbar Styles */
+.code-snippet-container::-webkit-scrollbar { /* WebKit Browsers (Chrome, Safari) */
+    width: 8px; /* Adjust scrollbar width */
+}
+
+.code-snippet-container::-webkit-scrollbar-track {
+    background: #110c1b; /* Match your background color */
+}
+
+.code-snippet-container::-webkit-scrollbar-thumb {
+    background-color: gray; /* Or a color that contrasts well */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.code-snippet-container::-webkit-scrollbar-thumb:hover {
+    background-color: lightgray; /* Hover color */
+}
+
+
+.code-snippet-container { /* Firefox */
+    scrollbar-width: thin; /* or auto, thick */
+    scrollbar-color: gray #110c1b; /* thumb track */
+}
+
+/* Optional: Scrollbar corner */
+.code-snippet-container::-webkit-scrollbar-corner {
+    background: #110c1b;
+}
+
+  
+  /* Optional: Add syntax highlighting with Prism.js or similar */
+  /* ... prismjs styles ... */

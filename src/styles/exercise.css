@@ -1,0 +1,336 @@
+/* Full-page container */
+.exercise-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Exercise container takes up 90% of page height */
+  .exercise-container {
+    display: flex;
+    gap: 20px;
+    
+  background-size: cover; /* Ensures the image covers the card */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+  url('/images/hard.jpg'); /* Darkens only the background */
+    padding: 20px;
+    height: 90%;
+  }
+
+  .exercise-container-intermediate {
+    display: flex;
+    gap: 20px;
+    
+  background-size: cover; /* Ensures the image covers the card */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+  url('/images/intemediate.jpg'); /* Darkens only the background */
+    padding: 20px;
+    height: 90%;
+  }
+
+  .exercise-container-advanced {
+    display: flex;
+    gap: 20px;
+    
+  background-size: cover; /* Ensures the image covers the card */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+  url('/images/beginner.jpg'); /* Darkens only the background */
+    padding: 20px;
+    height: 90%;
+  }
+
+  
+
+  
+  /* Left: Instructions */
+  .instructions-container {
+    flex: 1;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 600px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #f1f1f1;
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+  
+  /* Webkit browsers */
+.instructions-container::-webkit-scrollbar {
+    width: 8px;  /* Width of the scrollbar */
+  }
+  
+  .instructions-container::-webkit-scrollbar-thumb {
+    background-color: #333;  /* Color of the thumb (the draggable part) */
+    border-radius: 10px;  /* Rounded corners for the thumb */
+    border: 2px solid #f1f1f1;  /* Adds a border around the thumb */
+  }
+  
+  .instructions-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;  /* Color of the track (the area the thumb moves in) */
+    border-radius: 10px;  /* Rounded corners for the track */
+  }
+  .instructions-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 10px;
+    color: #333;
+  }
+  
+  .instructions-description *{
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .highlight {
+    background-color: lightgray;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace; /* Makes it look like code */
+  }
+
+  .instructions-description li {
+    margin-left: 20px;
+  }
+
+  .instructions-image-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .instructions-todo {
+    font-weight: 600;
+    margin-top: 15px;
+    font-family: "Audiowide", sans-serif !important;
+    background-color: rgb(243, 243, 172);
+    padding: 12px;
+    border-radius: 8px; 
+    color: #333;
+    
+  }
+
+  .instructions-todo-description {
+    padding: 5px;
+    margin-left: 15px;
+    margin-top: 5px;
+    
+  }
+
+  .instructions-todo-description-question {
+    border-top: 3px solid #333; 
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    
+  }
+ 
+  .instructions-container-highlight *{
+    padding: 12px;
+    border-radius: 8px; 
+    color: #333;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.instructions-container-highlight .highlight {
+  background-color: lightgray;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+  /* Hint Section */
+  .instructions-hint {
+    width: 100%;
+  }
+  
+  .hint-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 18px;
+  }
+  
+  .hint-button:hover {
+    background-color: #218838;
+  }
+  
+  .hint-content {
+    margin-top: 2px;
+    padding: 10px;
+    background-color: #d7fbd5;
+    border-left: 5px solid #218838;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 18px;
+  }
+
+  pre{
+    color: black;
+  }
+
+  .code {
+    color: #0056b3;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .user-input-box {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+    font-family: monospace;
+  }
+  
+  .user-input-box:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .feedback {
+    font-size: 14px;
+    
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    max-width: 400px;
+  }
+
+  .error-message {
+    margin-top: 8px; /* Adds space between error messages */
+  }
+  
+  .correct-feedback {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: 2px solid #388E3C;
+  }
+  
+  .wrong-feedback {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: 2px solid #D32F2F;
+   
+  }
+  
+
+  .solutions-title {
+    font-size: 18px;
+    color: #333;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    
+  }
+
+  .code-editor-container {
+    display: flex;
+    flex-grow: 1; /* The editor automatically resizes */
+    padding: 20px;
+}
+  
+  
+  /* Footer: Next Button */
+  .exercise-footer {
+    height: 10%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    margin-right: 20px;
+  }
+
+  .footer-description {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: aliceblue
+}
+
+
+  .back-button {
+    background-color: rgb(233, 44, 44);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .back-button:hover {
+    background-color: rgb(139, 26, 26);
+    transition: all 0.3s ease;
+
+  }
+  
+  .next-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .next-button:hover {
+    background-color: #218838;
+    transition: all 0.3s ease;
+  }
+  

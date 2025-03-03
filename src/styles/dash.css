@@ -1,0 +1,657 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Audiowide", sans-serif;
+}
+
+:root{
+    --primary-color: #EDFFEC;
+    --secondary-color: #1E1F20;
+    
+  
+    
+  --suggest-background: green;
+    --text-color: #000;
+    --text-secondary-color: #000;
+    --heading-secondary-color: #000;
+    --placeholder-color: #fff;
+    --prompt-disclaimer-text: #bebdbd;
+}
+
+body{
+    background: var(--primary-color);
+    overflow-y: auto;
+}
+
+.header,
+.chats .message,
+.chats .message .message__content,
+.prompt__form{
+    margin: 0 auto;
+    max-width: 824px;
+}
+
+body.hide-header .header{
+    margin: 0;
+    display: none;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    /*background-color: #76c07b; /*1fcfac
+    1fcfac*/
+    
+    border-bottom: #000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__logo{
+    color: var(--text-secondary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 100px;
+    gap: 10px; 
+}
+
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Chatbot Popup Box */
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  width: 60%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: transparent;
+  border-radius: 10px;
+  padding: 6px 6px;
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: red;
+  font-size: 10px;
+}
+
+/* Make sure the modal is above everything */
+.modal-content {
+  z-index: 1001;
+}
+
+
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    text-decoration: none; /* Remove the underline from the link */
+  }
+.navbar__button{
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    border: none;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.navbar__button:hover{
+    background: var(--secondary-hover-color);
+}
+
+.main-content-cibai {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding: 20px;
+    background-color: #C8E6C9;
+    overflow-y: hidden;
+  }
+
+  .main-content-title {
+    color: aliceblue;
+    text-align: center;
+    width: 100%; /* Makes the title span the entire width */
+  text-align: center; /* Centers the text horizontally */
+  padding: 20px; /* Adds some padding for spacing */
+  position: relative; /* Keeps the title at the top */
+  z-index: 1; /* Ensures the title stays above other content */
+  font-size: 2rem;
+  }
+  .wave-emoji {
+    display: inline-block;
+    animation: wave 1.1s infinite ease-in-out;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(15deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-15deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  .main-content-description {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 20px;
+  }
+  .card {
+    position: relative;
+    background-image: url('/images/beginner.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the card */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    min-height: 250px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+  .card::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity for darkness */
+    z-index: 1; /* Ensures overlay is on top */
+  }
+  
+  .card * {
+    position: relative;
+    z-index: 2; /* Puts text above overlay */
+  }
+
+  .card-difficulty {
+    color: #c4c3c3;
+  }
+  
+  .card-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .card-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .exercise-list *{
+    max-height: 100px; /* Limits the height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    width: 600px;
+    overflow-x: hidden;
+    border: 1px solid #ddd; /* Optional: adds a subtle border */
+    color: white; /* Matches card background */
+    border-radius: 5px;
+    scrollbar-width: thin;
+   
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  }
+  
+  .exercise-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .exercise-list li {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between; /* Pushes elements to far left and right */
+    align-items: center;
+    border-top: 1px solid #fbf6f6;
+    padding-top: 15px;
+    margin-top: auto; /* Push footer to bottom */
+    width: 100%;
+  }
+
+  .footer-link {
+    text-decoration: none;
+    color: #007bff;
+    
+  }
+  
+  .footer-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    
+    margin-right: 10px;
+  }
+
+  .footer-button:hover {
+    background-color: #238dff;
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    color: #000;
+  }
+  
+  .popup-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 120px;
+  }
+  
+  .popup-content {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .popup-close {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 130px;
+  }
+  
+  
+
+
+
+.navbar_icons a {
+    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none; /* Remove the underline */
+}
+
+.navbar_icons a:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar_card:hover {
+    background-color: #16a085;
+    color: #fff; /* Slightly darker shade on hover */
+    transform: scale(1.05);
+    transition: 0.3s ease;
+     /* Slightly enlarge on hover */
+}
+
+.navbar_icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between each icon */
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    overflow: visible;
+    
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('/images/intemediate.jpg'); /* Darkens only the background */
+}
+
+.main-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh; 
+  position: relative;
+
+  /*background: rgb(62,180,137);
+
+/*background: linear-gradient(159deg, rgba(62,180,137,1) 0%, rgba(144,238,144,1) 100%);*/
+  
+  background: url("/images/login1.gif") no-repeat center center/cover;
+  background-attachment: fixed;
+  z-index: 0;
+  
+}
+
+.main-container::before {
+  content: "";
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100h;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5 = 50% darker) */
+  z-index: 1;
+  
+}
+
+.main-container * {
+  position: relative;
+  z-index: 2; /* Ensures content is above the overlay */
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    color: #000;
+    background-color: #76c07b;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: #000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+}
+
+.sidebar__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar__menu a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar__menu li {
+    padding: 15px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar__menu li:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    transition: 0.3s ease;
+}
+
+.sidebar__menu span.material-symbols-outlined {
+    font-size: 24px; /* Adjust icon size */
+    margin-right: 10px; /* Add space between the icon and text */
+}
+
+.sidebar__menu li i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.locked-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+  border-radius: 10px; /* Adjust to match card styling */
+}
+
+.locked-text {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2); /* Light glow effect */
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  margin-top: 15px;
+}
+
+.progress-bar {
+  height: 15px;
+  background-color: #4caf50;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 14px;
+  color: aliceblue;
+  margin-top: 5px;
+}
+
+.syllabus-card {
+  width: 90%;
+  max-width: 1100px;
+  
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-left: 200px;
+}
+
+.syllabus-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity (0.5 = 50% dark) */
+  z-index: 1;
+}
+
+.syllabus-card > * {
+  position: relative;
+  z-index: 2; /* Ensures all content appears above the dark overlay */
+}
+
+.syllabus-details {
+  flex: 1;
+}
+
+.syllabus-difficulty {
+  font-size: 18px;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.syllabus-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: aliceblue;
+  margin-left: 0%;
+}
+
+.syllabus-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: aliceblue;
+}
+
+.syllabus-exercise-list {
+  margin-top: 20px;
+}
+
+.syllabus-exercise-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.syllabus-exercise-info {
+  color: aliceblue;
+}
+
+.syllabus-exercise-info h4 {
+  margin: 0;
+  font-size: 18px;
+  color: aliceblue;
+}
+
+.syllabus-exercise-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: aliceblue;
+}
+
+.syllabus-start-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.completed {
+  background-color: #28a745; /* Light green background */
+  color: aliceblue; /* Dark green text */
+  
+  font-weight: bold;
+}
+
+.syllabus-start-button.active {
+  background-color: #007bff; /* Blue for the first button */
+  color: white;
+}
+
+.syllabus-start-button.locked {
+  background-color: red; /* Gray for locked buttons */
+  color: aliceblue;
+  pointer-events: none; /* Disable clicking */
+  cursor: not-allowed;
+}
+
+
+
+
+@media screen and (max-width: 980px) {
+    
+    .header{
+        padding: 0 2rem;
+    }
+
+    .header__title{
+        line-height: 2.8rem;
+    }
+
+    .header__title h1{
+        font-size: 2.7rem;
+    }
+
+    .header__title h2{
+        font-size: 2.5rem;
+    }
+
+    .suggests{
+        justify-content: center;
+    }
+
+    .suggests__item:nth-child(3),
+    .suggests__item:nth-child(4){
+        display: none;
+    }
+
+    .message{
+        padding: 0 1.5rem;
+    }
+
+    .prompt__disclaim{
+        font-size: 0.8rem;
+    }
+
+}
+
+
