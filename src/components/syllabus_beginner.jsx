@@ -31,7 +31,7 @@ const SyllabusBeginner = ({userEmail}) => {
       try {
         console.log("Fetching progress for user:", userEmail);
         
-        const response = await axios.get(`http://localhost:3001/get-progress/${userEmail}`);
+        const response = await axios.get(`http://localhost:5000/get-progress/${userEmail}`);
         console.log("Full API Response:", response.data);
     
         if (!response.data) {

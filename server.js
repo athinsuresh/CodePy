@@ -10,9 +10,21 @@ import jwt from "jsonwebtoken";
 
 
 import dotenv from "dotenv";
-mongoose.connect("mongodb://127.0.0.1:27017/user");
+
 
 dotenv.config();
+const connectDB = async () => {
+    try {
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("✅ MongoDB Connected Successfully");
+    } catch (error) {
+      console.error("❌ MongoDB Connection Error:", error);
+      process.exit(1);
+    }
+  };
 
 const app = express();
 app.use((req, res, next) => {
