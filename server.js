@@ -66,9 +66,14 @@ const upload=multer({storage: storage});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
+const allowedOrigins = [
+    "http://localhost:5173", // Local development
+    "https://codepy-frontend.onrender.com" // Render frontend
+];
+
 // Enable CORS with the specific methods and headers
 app.use(cors({
-  origin: "http://localhost:5173",  // Allow only your frontend's origin
+  origin: allowedOrigins,  // Allow only your frontend's origin
   methods: ["GET", "POST", "OPTIONS"],  // Allow the necessary HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"],  // Allow the necessary headers
 }));
