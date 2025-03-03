@@ -23,7 +23,9 @@ const SignUpPage = () => {
     formData.append("profilePicture", profilePicture);
     formData.append("proficiency", proficiency);
 
-    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://codepy-qio0.onrender.com/";
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://codepy-qio0.onrender.com";
+    console.log("API_BASE_URL:", API_BASE_URL);  // ✅ Debug API base URL
+console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final request URL
 
     try {
         const result = await axios.post(`${API_BASE_URL}/register`, formData, {
