@@ -182,9 +182,7 @@ app.get("/user-profile", verifyToken, async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
-app.listen(3001, ()=> {
-    console.log("database is running")
-})
+
 
 app.post("/update-progress", async (req, res) => {
     console.log("Received request at /update-progress with body:", req.body); // Log request body // Debugging log
