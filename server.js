@@ -25,6 +25,8 @@ const connectDB = async () => {
       process.exit(1);
     }
   };
+ 
+export default connectDB;  
 
 const app = express();
 app.use((req, res, next) => {
