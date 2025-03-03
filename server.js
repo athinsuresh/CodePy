@@ -13,6 +13,8 @@ import dotenv from "dotenv";
 
 
 dotenv.config();
+
+console.log("🔍 MONGO_URI:", process.env.MONGO_URI); // ✅ Debug if env var is loaded
 const connectDB = async () => {
     try {
       await mongoose.connect(process.env.MONGO_URI, {
@@ -183,11 +185,7 @@ app.get("/user-profile", verifyToken, async (req, res) => {
 app.listen(3001, ()=> {
     console.log("database is running")
 })
-app.use(cors({
-    origin: "http://localhost:5173",  // Allow only your frontend's origin
-    methods: ["GET", "POST", "OPTIONS"],  // Allow the necessary HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"],  // Allow the necessary headers
-  }));
+
 app.post("/update-progress", async (req, res) => {
     console.log("Received request at /update-progress with body:", req.body); // Log request body // Debugging log
     const { email, course, exerciseId } = req.body;
@@ -212,11 +210,7 @@ app.post("/update-progress", async (req, res) => {
     }
 });
 
-app.use(cors({
-    origin: "http://localhost:5173",  // Allow only your frontend's origin
-    methods: ["GET", "POST", "OPTIONS"],  // Allow the necessary HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"],  // Allow the necessary headers
-  }));
+
 
 app.get("/get-progress/:userEmail", async (req, res) => {
     const { userEmail } = req.params;
@@ -235,11 +229,7 @@ app.get("/get-progress/:userEmail", async (req, res) => {
     }
 });
 
-app.use(cors({
-    origin: "http://localhost:5173",  // Allow only your frontend's origin
-    methods: ["GET", "POST", "OPTIONS"],  // Allow the necessary HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"],  // Allow the necessary headers
-  }));
+
 
 
 // API to validate exercise solution
