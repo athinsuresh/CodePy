@@ -197,7 +197,9 @@ app.post("/register", upload.single("profilePicture"), async (req, res) => {
         console.log("☁️ Cloudinary URL:", profilePicture);
 
         // Delete locally stored file after uploading to Cloudinary
-        fs.unlinkSync(req.file.path);
+        if (fs.existsSync(req.file.path)) {
+            fs.unlinkSync(req.file.path);
+        }
         // Check if user already exists
         let existingUser = await userModel.findOne({ email });
         if (existingUser) {
