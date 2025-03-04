@@ -16,7 +16,7 @@ const LoginPage = ({setUser}) => {
     setError(""); // Clear previous errors
 
     try {
-      const response = await axios.post("http://localhost:3001/login", { email, password });
+      const response = await axios.post("https://codepy-qio0.onrender.com/login", { email, password });
       console.log("User data from login response:", response.data.user); // Debugging
 
       if (response.data.message === "Success") {

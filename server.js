@@ -107,28 +107,43 @@ const executePythonCode = (code, callback) => {
   });
 };
 
-app.post("/login", (req, res) => {
-    const {email, password} = req.body;
-    userModel.findOne({email:email})
-    .then(user => {
-        if(user) {
-            if(user.password === password) {
-                const token = jwt.sign(
-                    { user: { email: user.email, name: user.name, proficiency: user.proficiency } }, // The payload (user data)
-                    "your_jwt_secret_key", // Secret key to sign the token
-                    { expiresIn: "1h" } // Optional: Set token expiration time (e.g., 1 hour)
-                  );  
-                res.json({message: "Success", 
-                    user: {name: user.name, email: user.email, proficiency: user.proficiency}, token: token,})
-            } else {
-                res.json("Incorrect password")
-            }
-        } else {
-            res.json("No record existed")
-        }
-    })
-})
+app.post("/login", async (req, res) => {
+    console.log("🔍 Login API hit"); 
+    console.log("📩 Request Body:", req.body);
 
+    const { email, password } = req.body;
+
+    try {
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Compare hashed password
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: "Incorrect password" });
+        }
+
+        // Generate JWT Token
+        const token = jwt.sign(
+            { email: user.email, name: user.name, proficiency: user.proficiency },
+            process.env.SECRET_KEY,  // Use environment variable
+            { expiresIn: "1h" }
+        );
+
+        res.json({
+            message: "Success",
+            user: { name: user.name, email: user.email, proficiency: user.proficiency },
+            token: token
+        });
+
+    } catch (error) {
+        console.error("🔥 Error in Login:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 
 const SECRET_KEY = "your_jwt_secret_key"; // Change this to a secure key
 
