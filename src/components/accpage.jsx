@@ -10,6 +10,7 @@ const Account = () => {
   const [loading, setLoading] = useState(true); // Track loading state
 
   useEffect(() => {
+    console.log("User Profile Picture URL:", user?.profilePicture);
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found, user not authenticated");
