@@ -7,6 +7,8 @@ import userModel from "./models/user.js"; // Ensure this file uses ES6 exports
 import multer from "multer";
 import path from "path";
 import jwt from "jsonwebtoken"; 
+import bcrypt from "bcryptjs";
+
 import connectDB from "./config/connectDB.js"; // Ensure this path is correct
 
 
@@ -125,33 +127,52 @@ const SECRET_KEY = "your_jwt_secret_key"; // Change this to a secure key
 app.post("/register", upload.single("profilePicture"), async (req, res) => {
     const { name, email, password, proficiency } = req.body;
     const profilePicture = req.file ? req.file.filename : null;
+
+    // Validate input
     if (!proficiency) {
         return res.status(400).json({ error: "Proficiency level is required." });
     }
+
     try {
-        const user = await userModel.create({ name, email, password, proficiency, profilePicture });
-        console.log(user)
-        await user.save();
+        // Check if user already exists
+        let existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: "Email already in use." });
+        }
+
+        // Hash password before storing
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create and save user
+        const user = await userModel.create({
+            name,
+            email,
+            password: hashedPassword, // Store hashed password
+            proficiency,
+            profilePicture,
+        });
 
         // Generate JWT token
         const token = jwt.sign(
-            { user: { name: user.name, email: user.email, profilePicture: user.profilePicture } },
-            SECRET_KEY, 
+            { userId: user._id },
+            process.env.SECRET_KEY,  // Use .env for security
             { expiresIn: "1h" }
         );
 
-        res.json({
+        res.status(201).json({
             message: "User successfully registered",
             user: {
                 name: user.name,
                 email: user.email,
                 profilePicture: user.profilePicture,
-                proficiency: user.proficiency
+                proficiency: user.proficiency,
             },
             token, // Send token to frontend
         });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Registration error:", err);
+        res.status(500).json({ error: "Internal server error." });
     }
 });
 
