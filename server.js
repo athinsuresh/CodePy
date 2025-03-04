@@ -26,6 +26,8 @@ console.log("🔍 MONGO_URI:", process.env.MONGO_URI); // ✅ Debug if env var i
   
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
 
 (async () => {
     console.log("🛠 Connecting to Database...");
@@ -64,7 +66,9 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-
+console.log("Cloudinary Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME);
+console.log("Cloudinary API Key:", process.env.CLOUDINARY_API_KEY);
+console.log("Cloudinary API Secret:", process.env.CLOUDINARY_API_SECRET);
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -76,7 +80,7 @@ cloudinary.config({
     cloudinary: cloudinary,
     params: {
       folder: "profile_pictures", // Change this to your desired folder
-      format: async (req, file) => "png", // Convert all images to PNG
+      format: "png", // Convert all images to PNG
       public_id: (req, file) => Date.now(),
     },
   });
@@ -84,7 +88,7 @@ cloudinary.config({
 const upload=multer({storage: storage});
 
 app.post("/upload", upload.single("image"), (req, res) => {
-    res.json({ imageUrl: req.file.path }); // Return image URL
+    res.json({ imageUrl: req.file.path || req.file.url || req.file.secure_url }); // Return image URL
   });
 
 app.use(express.json());
