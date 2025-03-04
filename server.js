@@ -128,6 +128,13 @@ app.post("/register", upload.single("profilePicture"), async (req, res) => {
     const { name, email, password, proficiency } = req.body;
     const profilePicture = req.file ? req.file.filename : null;
 
+    console.log("📂 Received File:", req.file);
+    console.log("📥 Received Body:", req.body);
+
+    if (!req.file) {
+        return res.status(400).json({ error: "Profile picture upload failed." });
+    }
+
     // Validate input
     if (!proficiency) {
         return res.status(400).json({ error: "Proficiency level is required." });
