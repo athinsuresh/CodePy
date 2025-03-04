@@ -26,7 +26,7 @@ const Exercise = () => {
        const handleSubmit = async () => {
         const userData = localStorage.getItem("user"); 
         console.log("🔍 Raw user data from localStorage:", userData);
-        const response = await fetch("http://localhost:5000/validate-solution", {
+        const response = await fetch("https://codepy-qio0.onrender.com/validate-solution", {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Exercise = () => {
     
             console.log("🚀 Sending progress update request:", requestBody); // Debugging
     
-            await fetch("http://localhost:5000/update-progress", {
+            await fetch("https://codepy-qio0.onrender.com/update-progress", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",

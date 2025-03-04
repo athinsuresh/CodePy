@@ -27,7 +27,7 @@ const SyllabusIntermediate = ({userEmail}) => {
       try {
         console.log("Fetching progress for user:", userEmail);
         
-        const response = await axios.get(`http://localhost:3001/get-progress/${userEmail}`);
+        const response = await axios.get(`https://codepy-qio0.onrender.com/get-progress/${userEmail}`);
         console.log("Full API Response:", response.data);
     
         if (!response.data) {
