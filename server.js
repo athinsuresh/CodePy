@@ -88,8 +88,12 @@ cloudinary.config({
 const upload=multer({storage: storage});
 
 app.post("/upload", upload.single("image"), (req, res) => {
-    res.json({ imageUrl: req.file.path || req.file.url || req.file.secure_url }); // Return image URL
-  });
+    if (!req.file) {
+        return res.status(400).json({ error: "File upload failed" });
+    }
+    res.json({ imageUrl: req.file.secure_url }); // ✅ Always return secure_url
+});
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
@@ -223,6 +227,28 @@ app.post("/register", upload.single("profilePicture"), async (req, res) => {
 
 app.use("/uploads", express.static(path.join(path.dirname(new URL(import.meta.url).pathname), "uploads")));
 app.use("/uploads", express.static("uploads")); // Serve images
+
+app.post("/update-profile", verifyToken, async (req, res) => {
+    const { profilePicture } = req.body; // Full Cloudinary URL
+
+    try {
+        const updatedUser = await userModel.findByIdAndUpdate(
+            req.user.id,
+            { profilePicture }, // ✅ Store full URL
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "Profile updated", user: updatedUser });
+    } catch (error) {
+        console.error("❌ Error updating profile:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 
 app.get("/user-profile", verifyToken, async (req, res) => {
     console.log("🔍 User Profile API Hit"); // Debugging log
