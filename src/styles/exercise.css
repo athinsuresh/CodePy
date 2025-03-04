@@ -258,7 +258,7 @@
   
   .wrong-feedback {
     background-color: #f44336; /* Red */
-    color: white;
+    color: white !important;
     border: 2px solid #D32F2F;
    
   }

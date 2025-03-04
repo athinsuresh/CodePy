@@ -36,7 +36,8 @@ const Output = ({ editorRef, language }) => {
       </Text>
       <Button
         variant="outline"
-        colorScheme="green"
+        bg="blue.100" // Light blue from the blue color palette
+  color="blue.800"
         mb={4}
         isLoading={isLoading}
         onClick={runCode}
