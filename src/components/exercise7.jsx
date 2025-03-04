@@ -73,7 +73,7 @@ const Exercise = () => {
            </div>
             <p className="instructions-todo">Instructions</p>
             <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+             <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question-question">1. Add a comment for <span className="highlight">city_pop</span> with a description of what you think the variable contains.</p>
             <div className="instructions-hint">
             <button className="hint-button" onClick={() => setShowHint(!showHint)}>

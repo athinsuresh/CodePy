@@ -110,7 +110,7 @@ const Exercise = () => {
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Use <span className="highlight">filter()</span> to remove odd numbers from tuple <span className="highlight">nums</span>. Print your result using the following line of code:</p>
             <div className="instructions-image-container">
                <img src="/images/exercise33(6).png" alt="Hello World Example" className="instructions-image" />

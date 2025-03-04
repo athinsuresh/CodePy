@@ -109,7 +109,7 @@ const Exercise = () => {
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Given the tuple <span className="highlight">nums</span> multiply values that are greater than 10 by two. Save your result as <span className="highlight">greater_than_10_doubled</span>. Print your answer using the following line of code:</p>
             <div className="instructions-image-container">
                <img src="/images/exercise34(5).png" alt="Hello World Example" className="instructions-image" />

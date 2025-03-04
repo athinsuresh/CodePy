@@ -122,7 +122,7 @@ const Exercise = () => {
            
             <p className="instructions-todo">Instructions</p>
             <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. In the last exercise, we saw how using <span className="highlight">**</span> allowed us to capture different food items that a table will order. In the next few checkpoints, we will finish implementing the functionality of our <span className="highlight">assign_food_items()</span> function.</p>
             <p className="instructions-todo-description">Take some time to get reacquainted with the program. Note the changes in the <span className="highlight">assign_food_items()</span> function.</p>
             <p className="instructions-todo-description">Run the code to move on</p>

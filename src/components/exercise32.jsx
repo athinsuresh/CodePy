@@ -116,7 +116,7 @@ const handleSubmit = async () => {
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Complete the <span className="highlight">odd_or_even()</span> function provided. The body of the function will return <span className="highlight">even_function(n)</span> if <span className="highlight">n</span> is even and return <span className="highlight">odd_function(n)</span> if <span className="highlight">n</span> is odd.</p>
             
             <div className="instructions-hint">

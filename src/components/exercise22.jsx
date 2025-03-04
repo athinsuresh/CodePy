@@ -110,7 +110,7 @@ def assign_table(table_number, name, vip_status=False):
            <p>Utilizing iteration and other positional arguments are two common ways we can increase the utility of our functions when using the unpacking operator (*). Let’s practice using these techniques to see how powerful they are!</p>
            
             <p className="instructions-todo">Instructions</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Jiho is having a lot of success with our restaurant application. Unfortunately, our original design did not account for storing orders for each specific table. Jiho asked us to adjust our application to be able to store the orders that come in for each specific table and also be able to print out the order for the kitchen staff.</p>
             <p className="instructions-todo-description">   Take some time to review the adjusted structure of the program we created earlier. Note that <span className="highlight">tables</span> is now dictionary with the table numbers as the keys. It also accounts for a new property called <span className="highlight">order</span>. The <span className="highlight">assign_table</span> function has also been adjusted to account for the changes.</p>
             <p className="instructions-todo-description">   Run the code to have an idea on how it works</p>

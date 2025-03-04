@@ -108,7 +108,7 @@ const Exercise = () => {
            
             <p className="instructions-todo">Instructions</p>
             <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Jiho is pleased with how we can store orders for our tables. However, the staff now wants to distinguish between food items and drinks.</p>
             <p className="instructions-todo-description">   Since food items get prepared in the kitchen and drinks are prepared at the bar, it’s important to distinguish between the two in our application.</p>
             <p className="instructions-todo-description">   The <span className="highlight">tables</span> dictionary has been changed to support the staff’s requests. Take some time to examine the changed structure.</p>

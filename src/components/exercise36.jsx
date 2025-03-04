@@ -124,7 +124,7 @@ const handleSubmit = async () => {
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. Given the record of item sales <span className="highlight">costs</span>, find the total cost of items that cost more than £150. Assign the answer to variable <span className="highlight">total</span>. Make sure to print out your solution. Use all three higher-order functions for this exercise.</p>
            
             <div className="instructions-hint">

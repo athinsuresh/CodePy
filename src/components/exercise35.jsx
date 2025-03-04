@@ -99,7 +99,7 @@ const handleSubmit = async () => {
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+            <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. The dictionary provided represents the number of a given fruit sold over three days - a dictionary entry is:</p>
             <div className="instructions-image-container">
                <img src="/images/exercise35(3).png" alt="Hello World Example" className="instructions-image" />

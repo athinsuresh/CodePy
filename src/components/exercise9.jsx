@@ -77,7 +77,7 @@ const handleSubmit = async () => {
            <p>A boolean is actually a special case of an integer. A value of <span className="highlight">True</span> corresponds to an integer value of 1, and will behave the same. A value of <span className="highlight">False</span> corresponds to an integer value of 0.</p>
             <p className="instructions-todo">Instructions</p>
             <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-            return <CodeSnippet code={starterCode} />;
+             <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question-question">1. Someone has introduced themselves to you using comments in main.py.
 
 Read the comments and then create a variable called <span className="highlight">age_is_12</span> and set it to be <span className="highlight">True</span> or <span className="highlight">False</span> depending on if this person’s age is 12.</p>
