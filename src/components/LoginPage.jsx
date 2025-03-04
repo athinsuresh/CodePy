@@ -15,8 +15,11 @@ const LoginPage = ({setUser}) => {
     e.preventDefault();
     setError(""); // Clear previous errors
 
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://codepy-qio0.onrender.com";
+
+
     try {
-      const response = await axios.post("https://codepy-qio0.onrender.com/login", { email, password });
+      const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
       console.log("User data from login response:", response.data.user); // Debugging
 
       if (response.data.message === "Success") {
