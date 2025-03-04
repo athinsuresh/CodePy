@@ -52,13 +52,15 @@ const verifyToken = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         console.log("✅ Decoded Token:", decoded);
-        req.user = decoded.user;
+
+        req.user = { id: decoded.userId }; // Correct assignment
         next();
     } catch (err) {
         console.log("❌ Token verification failed:", err.message);
         res.status(401).json({ message: "Invalid token" });
     }
 };
+
 
 
 
@@ -198,10 +200,7 @@ app.get("/user-profile", verifyToken, async (req, res) => {
     console.log("🛠 Token User:", req.user);
     try {
         // Get the email from the decoded token
-        const userEmail = req.user.email;
-
-        // Find user dynamically using the email
-        const user = await userModel.findOne({ email: userEmail });
+        const user = await userModel.findById(req.user.id);
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
