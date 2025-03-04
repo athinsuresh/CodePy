@@ -16,7 +16,7 @@ const Account = () => {
       setLoading(false);
       return; // Stop execution if there's no token
   }
-    axios.get("http://localhost:3001/user-profile", {
+    axios.get("https://codepy-qio0.onrender.com/user-profile", {
       headers: {
         Authorization: `Bearer ${token}`
       }

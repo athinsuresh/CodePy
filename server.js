@@ -47,7 +47,7 @@ const verifyToken = (req, res, next) => {
     const token = authHeader.split(" ")[1]; // Extract the actual token
 
     try {
-        const decoded = jwt.verify(token, "your_jwt_secret_key");
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
         req.user = decoded.user; // Attach user data to req.user
         next();
     } catch (err) {
