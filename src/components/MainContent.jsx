@@ -152,7 +152,9 @@ const MainContent = () => {
             const difficultyLevels = ["Beginner", "Intermediate", "Advanced"];
   const userLevelIndex = difficultyLevels.indexOf(userProficiency);
   const courseLevelIndex = difficultyLevels.indexOf(card.requiredProficiency);
-  const isLocked = courseLevelIndex > userLevelIndex; // If course level is higher, lock it
+  const prevCourseID = cardData[courseLevelIndex - 1]?.courseID;
+const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (cardData[courseLevelIndex - 1]?.exercises.length || 0) : true;
+  const isLocked = courseLevelIndex > userLevelIndex && !prevCourseCompleted; // If course level is higher, lock it
             return (
               <div
                 className="card"
