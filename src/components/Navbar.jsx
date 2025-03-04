@@ -78,7 +78,7 @@ const Navbar = () => {
                 &times;
               </button>
               <iframe
-                src="http://localhost:5174" // Update with your AI chatbot's URL
+                src="https://codepy-ai.onrender.com/" // Update with your AI chatbot's URL
                 width="100%"
                 height="500px"
                 style={{ border: "none" }}
