@@ -39,21 +39,27 @@ app.use((req, res, next) => {
 });
 const verifyToken = (req, res, next) => {
     const authHeader = req.header("Authorization");
+    console.log("🔍 Incoming Authorization Header:", authHeader);
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        console.log("❌ No token provided or incorrect format");
         return res.status(401).json({ message: "No token, authorization denied" });
     }
 
-    const token = authHeader.split(" ")[1]; // Extract the actual token
+    const token = authHeader.split(" ")[1];
+    console.log("🔑 Extracted Token:", token);
 
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        req.user = decoded.user; // Attach user data to req.user
+        console.log("✅ Decoded Token:", decoded);
+        req.user = decoded.user;
         next();
     } catch (err) {
+        console.log("❌ Token verification failed:", err.message);
         res.status(401).json({ message: "Invalid token" });
     }
 };
+
 
 
 
