@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
+import fs from "fs";
 
 
 import connectDB from "./config/connectDB.js"; // Ensure this path is correct
@@ -187,6 +188,16 @@ app.post("/register", upload.single("profilePicture"), async (req, res) => {
     }
 
     try {
+        const cloudinaryResponse = await cloudinary.uploader.upload(req.file.path, {
+            folder: "user_profiles", // Store in a specific folder
+        });
+
+        // Get secure Cloudinary URL
+        const profilePicture = cloudinaryResponse.secure_url;
+        console.log("☁️ Cloudinary URL:", profilePicture);
+
+        // Delete locally stored file after uploading to Cloudinary
+        fs.unlinkSync(req.file.path);
         // Check if user already exists
         let existingUser = await userModel.findOne({ email });
         if (existingUser) {
