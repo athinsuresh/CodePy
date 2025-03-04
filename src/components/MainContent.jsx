@@ -114,7 +114,7 @@ const MainContent = () => {
     const fetchProgress = async (courseID) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/get-progress/${userEmail}`
+          `https://codepy-qio0.onrender.com/get-progress/${userEmail}`
         );
         const userProgress = response.data?.progress || {};
         const completedExercises =

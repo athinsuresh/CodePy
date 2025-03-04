@@ -85,7 +85,7 @@ Another issue you might run into is attempting to create a string without quotes
             
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
-           return <CodeSnippet code={starterCode} />;
+           <CodeSnippet code={starterCode} />
             <p className="instructions-todo-description-question">1. We’ve written a print statements that will raise error. It has no quotes at all.</p>
             <div className="instructions-image-container">
                <img src="/images/exercise14(2).png" alt="Hello World Example" className="instructions-image" />
