@@ -91,8 +91,13 @@ app.post("/upload", upload.single("image"), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: "File upload failed" });
     }
-    res.json({ imageUrl: req.file.secure_url }); // ✅ Always return secure_url
+
+    console.log("📸 Uploaded Image File:", req.file); // Debugging log
+
+    // Ensure secure_url is returned
+    res.json({ imageUrl: req.file.path || req.file.url || req.file.secure_url });
 });
+
 
 
 app.use(express.json());
@@ -163,7 +168,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-const SECRET_KEY = "your_jwt_secret_key"; // Change this to a secure key
+
 
 app.post("/register", upload.single("profilePicture"), async (req, res) => {
     const { name, email, password, proficiency } = req.body;
@@ -225,29 +230,29 @@ app.post("/register", upload.single("profilePicture"), async (req, res) => {
 });
 
 
-app.use("/uploads", express.static(path.join(path.dirname(new URL(import.meta.url).pathname), "uploads")));
-app.use("/uploads", express.static("uploads")); // Serve images
+
 
 app.post("/update-profile", verifyToken, async (req, res) => {
-    const { profilePicture } = req.body; // Full Cloudinary URL
+    const { profilePicture } = req.body;
+
+    // Validate that profilePicture is a full URL
+    if (!profilePicture.startsWith("https://res.cloudinary.com")) {
+        return res.status(400).json({ error: "Invalid profile picture URL" });
+    }
 
     try {
         const updatedUser = await userModel.findByIdAndUpdate(
             req.user.id,
-            { profilePicture }, // ✅ Store full URL
+            { profilePicture }, // ✅ Save full URL
             { new: true }
         );
 
-        if (!updatedUser) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
         res.json({ message: "Profile updated", user: updatedUser });
     } catch (error) {
-        console.error("❌ Error updating profile:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
 
 
 app.get("/user-profile", verifyToken, async (req, res) => {
