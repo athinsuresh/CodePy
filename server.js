@@ -8,8 +8,9 @@ import multer from "multer";
 import path from "path";
 import jwt from "jsonwebtoken"; 
 import bcrypt from "bcryptjs";
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+
 
 import connectDB from "./config/connectDB.js"; // Ensure this path is correct
 
