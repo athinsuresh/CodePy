@@ -16,7 +16,7 @@ const Exercise = () => {
     if (!user) return;
 
     try {
-      await axios.post("http://localhost:3001/update-progress", {
+      await axios.post("https://codepy-qio0.onrender.com/update-progress", {
         email: user.email,
         course: "course1",
         exerciseId: "exercise2",
