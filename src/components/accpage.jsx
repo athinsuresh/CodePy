@@ -48,7 +48,7 @@ const Account = () => {
           <div className="navbar-profile" onClick={() => setDropdownOpen(!dropdownOpen)}>
                     {user && user.profilePicture ? (
                       <img
-                        src={`https://codepy-qio0.onrender.com/uploads/${user.profilePicture}`}
+                        src={user.profilePicture}
                         alt="Profile"
                         className="navbar-profile-pic"
                       />
@@ -77,7 +77,7 @@ const Account = () => {
             <div className="profile-info">
               {user.profilePicture ? (
                 <img
-                  src={`https://codepy-qio0.onrender.com/uploads/${user.profilePicture}`}
+                  src={user.profilePicture}
                   alt="Profile"
                   className="profile-pic"
                 />

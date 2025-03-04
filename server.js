@@ -8,6 +8,8 @@ import multer from "multer";
 import path from "path";
 import jwt from "jsonwebtoken"; 
 import bcrypt from "bcryptjs";
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("cloudinary").v2;
 
 import connectDB from "./config/connectDB.js"; // Ensure this path is correct
 
@@ -62,20 +64,27 @@ const verifyToken = (req, res, next) => {
 };
 
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
 
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads/");  // Save files in the "uploads" directory
+  const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+      folder: "profile_pictures", // Change this to your desired folder
+      format: async (req, file) => "png", // Convert all images to PNG
+      public_id: (req, file) => Date.now(),
     },
-    filename: function (req, file, cb) {
-      const ext = path.extname(file.originalname); // Extract file extension
-      cb(null, Date.now() + ext); // Rename file with timestamp + extension
-    }
   });
 
 const upload=multer({storage: storage});
+
+app.post("/upload", upload.single("image"), (req, res) => {
+    res.json({ imageUrl: req.file.path }); // Return image URL
+  });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
