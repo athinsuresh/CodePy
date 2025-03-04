@@ -79,6 +79,7 @@
 
 .forgot_passoword {
   cursor: pointer;
+  color: aliceblue !important;
 }
 
 .primaryInput {
