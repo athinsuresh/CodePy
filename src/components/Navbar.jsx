@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="navbar-profile">
           {user && user.profilePicture ? (
             <img
-              src={`https://codepy-qio0.onrender.com/uploads/${user.profilePicture}`}
+              src={user.profilePicture}
               alt="Profile"
               className="navbar-profile-pic"
             />
