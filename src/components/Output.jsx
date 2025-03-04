@@ -36,8 +36,8 @@ const Output = ({ editorRef, language }) => {
       </Text>
       <Button
         variant="outline"
-        bg="blue.100" // Light blue from the blue color palette
-  color="blue.800"
+        bg="blue.800" // Light blue from the blue color palette
+  color="blue.100"
         mb={4}
         isLoading={isLoading}
         onClick={runCode}
@@ -47,7 +47,7 @@ const Output = ({ editorRef, language }) => {
       <Box
         height="75vh"
         p={2}
-        color={isError ? "red.400" : ""}
+        color={isError ? "red.400" : "whiteAlpha.800"}
         border="1px solid"
         borderRadius={4}
         borderColor={isError ? "red.500" : "#333"}
