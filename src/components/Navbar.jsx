@@ -17,7 +17,7 @@ const Navbar = () => {
       setLoading(false);
       return;
   }
-    axios.get("http://localhost:3001/user-profile", {
+    axios.get("https://codepy-qio0.onrender.com/user-profile", {
       headers: {Authorization: `Bearer ${token}`}
     })
       .then((res) => {
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="navbar-profile">
           {user && user.profilePicture ? (
             <img
-              src={`http://localhost:3001/uploads/${user.profilePicture}`}
+              src={`https://codepy-qio0.onrender.com/uploads/${user.profilePicture}`}
               alt="Profile"
               className="navbar-profile-pic"
             />
