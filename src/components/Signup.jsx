@@ -11,6 +11,7 @@ const SignUpPage = () => {
   const [password, setPassword] = useState()
   const [profilePicture, setProfilePicture]= useState()
   const [proficiency, setProficiency]= useState("Beginner");
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState ({});
   const navigate = useNavigate()
 
@@ -32,8 +33,11 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+        setLoading(false)
+        return;} 
 
     const formData = new FormData();
     formData.append("name", name);
@@ -67,6 +71,8 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
         }
     } catch (err) {
         console.error("Registration error:", err);
+    } finally {
+        setLoading(false);
     }
 };
     return (
@@ -133,7 +139,10 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                     />
                     {errors.profilePicture && <p className="error-message">{errors.profilePicture}</p>}
 
-                    <button type="submit" className="signup-button">Sign Up</button>
+                    <button type="submit" className="signup-button" disabled={loading}>
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
+          {loading && <p className="loading-text">Processing your request... 🔄</p>}
                     <small className="forgot_password">Already have an account?</small>
                     
                      <p className="login-button"><Link to="/login">Login</Link></p>

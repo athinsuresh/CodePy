@@ -108,6 +108,15 @@
   transition: all 0.3s ease;
 }
 
+.signup-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+.loading-text {
+  color: #007bff;
+  font-size: 14px;
+  font-weight: bold;
+}
 
 .error-message {
   color: red;
