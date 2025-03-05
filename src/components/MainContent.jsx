@@ -74,20 +74,12 @@ const MainContent = () => {
   const [progress, setProgress] = useState({});
   const getResumeLink = (course) => {
     const completedExercises = progress[course.courseID] || 0;
-  
-    let baseNumber;
-    if (course.courseID === "course1") baseNumber = 1;
-    else if (course.courseID === "course2") baseNumber = 21;
-    else if (course.courseID === "course3") baseNumber = 31;
-    else baseNumber = 1; // Default fallback
-  
-    // Check if all exercises are completed
-    if (completedExercises >= course.exercises.length) {
-      return course.link; // Redirect to the final exercise or completion page
-    }
-  
-    // Generate the correct exercise path
-    return `/exercise${baseNumber + completedExercises}`;
+
+    let baseNumber = course.courseID === "course1" ? 1 : course.courseID === "course2" ? 21 : 31;
+    let buttonLabel = completedExercises === 0 ? "Start" : completedExercises >= course.exercises.length ? "Completed" : "Resume";
+    let exerciseLink = completedExercises >= course.exercises.length ? course.link : `/exercise${baseNumber + completedExercises}`;
+    
+    return { exerciseLink, buttonLabel };
   };
   
 
@@ -146,6 +138,7 @@ const MainContent = () => {
       <div className="main-content">
         <div className="card-container">
           {cardData.map((card, index) => {
+            const { exerciseLink, buttonLabel } = getResumeLink(card);
             const completedExercises = progress[card.courseID] || 0;
             const totalExercises = card.exercises.length;
             const progressPercentage = (completedExercises / totalExercises) * 100;
@@ -199,9 +192,8 @@ const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (car
                   <Link to={card.syllabus} className="footer-link">
                     View Syllabus
                   </Link>
-                  <Link to={getResumeLink(card)} className="footer-button">
-  Resume →
-</Link>
+                  <Link to={exerciseLink} className="footer-button">{buttonLabel} →</Link>
+                  
                 </div>
 
                 {/* Pop-up Syllabus */}
