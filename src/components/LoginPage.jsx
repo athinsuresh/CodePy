@@ -9,10 +9,12 @@ const LoginPage = ({setUser}) => {
     const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState(""); 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError(""); // Clear previous errors
 
     const API_BASE_URL = process.env.REACT_APP_API_URL || "https://codepy-qio0.onrender.com";
@@ -32,6 +34,8 @@ const LoginPage = ({setUser}) => {
       }
     } catch (err) {
       setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -72,7 +76,11 @@ const LoginPage = ({setUser}) => {
                     />
                     {error && <p className="error-message">{error}</p>}
                     
-                    <button type="submit" className="login-button">Login</button>
+                    
+                    <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+          {loading && <p className="loading-text">Processing your request... 🔄</p>}
                     
                 </div>
                 </form>

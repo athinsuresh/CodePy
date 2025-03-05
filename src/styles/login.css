@@ -140,6 +140,11 @@
   transition: all 0.3s ease;
 }
 
+.login-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
 .forgot_password {
   font-size: medium;
   color: aliceblue !important;
