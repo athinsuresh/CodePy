@@ -11,10 +11,29 @@ const SignUpPage = () => {
   const [password, setPassword] = useState()
   const [profilePicture, setProfilePicture]= useState()
   const [proficiency, setProficiency]= useState("Beginner");
+  const [errors, setErrors] = useState ({});
   const navigate = useNavigate()
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!name) newErrors.name = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Invalid email format";
+    
+    if (!password) newErrors.password = "Password is required";
+    else if (password.length < 6) newErrors.password = "Password must be at least 6 characters long";
+
+    if (!profilePicture) newErrors.profilePicture = "Profile picture is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     const formData = new FormData();
     formData.append("name", name);
@@ -77,6 +96,7 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Username"
                     />
+                    {errors.name && <p className="error-message">{errors.name}</p>}
                     <input
                         name="email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -84,6 +104,7 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                         className="primaryInput focus"
                         placeholder="E-Mail"
                     />
+                    {errors.email && <p className="error-message">{errors.email}</p>}
                     <input
                         name="password"
                         onChange={(e) => setPassword(e.target.value)}
@@ -91,6 +112,7 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                         className="primaryInput focus"
                         placeholder="Password"
                     />
+                    {errors.password && <p className="error-message">{errors.password}</p>}
                     <select
   name="proficiency"
   className="primaryInput focus"
@@ -109,13 +131,12 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                         className="primaryInput focus"
                         placeholder="Choose a file"
                     />
+                    {errors.profilePicture && <p className="error-message">{errors.profilePicture}</p>}
+
                     <button type="submit" className="signup-button">Sign Up</button>
                     <small className="forgot_password">Already have an account?</small>
                     
                      <p className="login-button"><Link to="/login">Login</Link></p>
-                    
-                    
-                    
                 </div>
                 </form>
             </div>
