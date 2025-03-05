@@ -286,6 +286,21 @@ body.hide-header .header{
     margin-right: 10px;
   }
 
+  .start-button {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .resume-button {
+    background-color: #ff9800;
+    color: white;
+  }
+
+  .completed-button {
+    background-color: #28a745;
+    color: white;
+  }
+
   .footer-button:hover {
     background-color: #238dff;
   }
