@@ -81,6 +81,8 @@ const LoginPage = ({setUser}) => {
             {loading ? "Logging in..." : "Login"}
           </button>
           {loading && <p className="loading-text">Processing your request... 🔄</p>}
+          {loading && <p className="loading-text">🚀 Waking up the server... This may take up to 50 seconds.</p>}
+
                     
                 </div>
                 </form>

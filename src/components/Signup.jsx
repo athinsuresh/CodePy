@@ -143,6 +143,8 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
             {loading ? "Signing Up..." : "Sign Up"}
           </button>
           {loading && <p className="loading-text">Processing your request... 🔄</p>}
+          {loading && <p className="loading-text">🚀 Waking up the server... This may take up to 50 seconds.</p>}
+
                     <small className="forgot_password">Already have an account?</small>
                     
                      <p className="login-button"><Link to="/login">Login</Link></p>
