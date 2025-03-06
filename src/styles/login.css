@@ -3,13 +3,14 @@
 
 .login-container {
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh; /* Full height */
   background: 
               url("/images/bg2.gif") no-repeat center center/cover;
-              position: relative;
+  padding: 20px;
+  overflow-y: auto;
   
 }
 
@@ -33,7 +34,8 @@
 
 .title-container {
   text-align: center;
-  margin-top: 40px;
+  margin-left: 30px;
+  flex: 1;
 }
 
 .app-title {
@@ -49,18 +51,16 @@
 }
 
 .LoginCard {
-  font-family: "Poppins", sans-serif;
+  font-family: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1.2rem;
   padding: 1.5rem;
-  width: 40rem;
+  width: 60rem;
   max-width: 100%;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 25%);
-  margin-left: 430px;
-  margin-top: 20px;
-  
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%);
+  margin-top: 30px;
   border-radius: 10px;
 }
 .login-text {
@@ -76,8 +76,6 @@
   gap: 0.5rem; /* Adjust spacing between logo and title */
   margin-bottom: 1rem; /* Add some space below the container */
 }
-
-
 
 .primaryInput {
   background-color: rgb(248, 241, 241);
@@ -99,7 +97,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 10px;
+  margin-top: 8px;
   font-family: 'Audiowide', sans-serif !important;
 }
 
@@ -120,6 +118,7 @@
 
 .error-message {
   color: red;
+  text-align: left !important;
   font-weight: bold;
 }
 .login-button {
@@ -149,3 +148,40 @@
   font-size: medium;
   color: aliceblue !important;
 }
+
+@media (max-width: 768px) {
+  .login-container {
+    justify-content: flex-start; /* Aligns everything from the top */
+    padding-top: 50px; /* Adds space at the top */
+    flex-direction: column;
+  }
+
+  .title-container {
+    max-width: 90%;
+    text-align: center;
+    margin-bottom: 20px; /* Adds spacing between title and login card */
+  }
+
+  .app-description {
+    font-size: 1rem;
+  }
+
+  .LoginCard {
+    width: 90%; /* Adjusts width for smaller screens */
+    max-width: 400px; /* Prevents it from being too wide */
+    margin: 0 auto; /* Centers it horizontally */
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-container h1 {
+    font-size: 1.4rem; /* Makes title text smaller on very small screens */
+  }
+
+  .LoginCard {
+    width: 95%; /* Uses more screen space for mobile */
+    padding: 1.2rem;
+  }
+}
+
