@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
-const SignUpPage = () => {
+const SignUpPage = ({setUser}) => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
