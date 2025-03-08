@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
-const SignUpPage = ({setUser}) => {
+const SignUpPage = () => {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
@@ -63,7 +63,6 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
             // Store user and token in local storage
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
-            setUser(user)
 
             // Redirect to dashboard
             navigate("/dash");
