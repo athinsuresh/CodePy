@@ -25,6 +25,9 @@ const SyllabusBeginner = ({userEmail}) => {
   const [completedExercises, setCompletedExercises] = useState([]);
 
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    console.log("localStorage user:", userData);
+
     // Fetch user progress by email
     const fetchProgress = async () => {
 
