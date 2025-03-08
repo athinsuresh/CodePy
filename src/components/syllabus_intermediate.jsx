@@ -14,43 +14,42 @@ const exercises = [
 ];
 
 const SyllabusIntermediate = () => {
-  const userData = JSON.parse(localStorage.getItem("user"));
-  const userEmail = userData?.email || ""; // Get email from localStorage
-  console.log("User email:", userEmail)
+  const [userEmail, setUserEmail] = useState("");
   const [completedExercises, setCompletedExercises] = useState([]);
 
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData?.email) {
+      setUserEmail(userData.email);
+    } else {
+      console.warn("No user email found in localStorage.");
+    }
+  }, []);
+
+  useEffect(() => {
     if (!userEmail) {
-      console.warn("No user email found, skipping fetch.");
+      console.warn("No user email set, skipping fetch.");
       return;
     }
-    // Fetch user progress by email
-    const fetchProgress = async () => {
 
+    const fetchProgress = async () => {
       try {
         console.log("Fetching progress for user:", userEmail);
-        
         const response = await axios.get(`https://codepy-qio0.onrender.com/get-progress/${userEmail}`);
         console.log("Full API Response:", response.data);
     
-        if (!response.data) {
-          console.warn("Warning: Response data is undefined or null.");
-          return;
-        }
-    
-        if (!response.data.progress) {
+        if (!response.data?.progress) {
           console.warn("Warning: 'progress' property is missing in response data.");
-          console.log("Received data:", response.data);
           return;
         }
     
         const userProgress = response.data.progress;
         console.log("User progress object:", userProgress);
     
-        // Debugging if course1 exists
+        console.log("Available keys in progress:", Object.keys(userProgress)); // Debugging line
+    
         if (!userProgress["course2"]) {
           console.warn("Warning: 'course2' key is missing in progress data.");
-          console.log("Available keys in progress:", Object.keys(userProgress));
           return;
         }
     
@@ -62,10 +61,9 @@ const SyllabusIntermediate = () => {
         console.error("Error fetching progress:", error);
       }
     };
-    
 
     fetchProgress();
-  }, [userEmail]); // Re-fetch when userEmail changes
+  }, [userEmail]);
 
   const progressPercentage = (completedExercises.length / exercises.length) * 100;
   return (
