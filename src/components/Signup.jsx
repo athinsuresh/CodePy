@@ -63,6 +63,7 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
             // Store user and token in local storage
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
+            setUser(response.data.user)
 
             // Redirect to dashboard
             navigate("/dash");
