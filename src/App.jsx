@@ -45,7 +45,7 @@ const router = createBrowserRouter(
     { path: "/login", element: <LoginPage setUser={setUser} /> },
     { path: "/dash", element: <Dashboard user={user} /> },
     { path: "/account", element: <Account /> },
-    {path: "/syllabus-beginner", element: <SyllabusBeginner userEmail={user?.email}/>},
+    {path: "/syllabus-beginner", element: <SyllabusBeginner/>},
     {path: "/syllabus-intermediate", element: <SyllabusIntermediate userEmail={user?.email} />},
     {path: "/syllabus-advanced", element: <SyllabusAdvanced userEmail={user?.email} />},
     { path: "/exercise1", element: <Exercise1 /> },
