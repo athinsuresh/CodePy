@@ -16,13 +16,20 @@ const exercises = [
 ];
 
 
-const SyllabusIntermediate = ({userEmail}) => {
+const SyllabusIntermediate = () => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userEmail = userData?.email || ""; // Get email from localStorage
   console.log("User email:", userEmail)
   const [completedExercises, setCompletedExercises] = useState([]);
 
   useEffect(() => {
+    if (!userEmail) {
+      console.warn("No user email found, skipping fetch.");
+      return;
+    }
     // Fetch user progress by email
     const fetchProgress = async () => {
+
 
       try {
         console.log("Fetching progress for user:", userEmail);

@@ -13,11 +13,17 @@ const exercises = [
     { id: "2.5", exerciseLink:"exercise25", title: "All together now!", description: "Combine *args and **kwargs to write powerful Python functions.", difficulty: "Intermediate" },
 ];
 
-const SyllabusIntermediate = ({userEmail}) => {
+const SyllabusIntermediate = () => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userEmail = userData?.email || ""; // Get email from localStorage
   console.log("User email:", userEmail)
   const [completedExercises, setCompletedExercises] = useState([]);
 
   useEffect(() => {
+    if (!userEmail) {
+      console.warn("No user email found, skipping fetch.");
+      return;
+    }
     // Fetch user progress by email
     const fetchProgress = async () => {
 
