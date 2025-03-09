@@ -248,6 +248,7 @@
 
   .error-message {
     margin-top: 8px; /* Adds space between error messages */
+    color: aliceblue !important;
   }
   
   .correct-feedback {
