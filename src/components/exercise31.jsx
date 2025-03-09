@@ -103,7 +103,7 @@ const handleSubmit = async () => {
            <p className="instructions-todo">Instructions</p>
            <p className="instructions-todo-description-question">Copy the starter code below and begin working on it</p>
             <CodeSnippet code={starterCode} />
-            <p className="instructions-todo-description-question">1. Create a <span className="highlight">namedtuple</span> called <span className="highlight">country</span>country to represent a country. It should contain fields to represent the name of a country, its capital, and the continent on which it is located.</p>
+            <p className="instructions-todo-description-question">1. Create a <span className="highlight">namedtuple</span> called <span className="highlight">country</span> to represent a country. It should contain fields to represent the name of a country, its capital, and the continent on which it is located.</p>
             <p className="instructions-todo-description">The  <span className="highlight">country</span>tuple should contain <span className="highlight">name</span>, <span className="highlight">capital</span>, and <span className="highlight">continent</span> as fields.</p>
             <div className="instructions-hint">
             <button className="hint-button" onClick={() => setShowHint(!showHint)}>
