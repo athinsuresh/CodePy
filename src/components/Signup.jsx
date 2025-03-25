@@ -77,8 +77,6 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
 };
     return (
         <div>
-            
-            
             {/* Wrapper div for the title and login form */}
             <div className="login-container">
                 <div className="title-container">
@@ -120,15 +118,15 @@ console.log("Final API URL:", `${API_BASE_URL}/register`);  // ✅ Debug final r
                     />
                     {errors.password && <p className="error-message">{errors.password}</p>}
                     <select
-  name="proficiency"
-  className="primaryInput focus"
-  value={proficiency}
-  onChange={(e) => setProficiency(e.target.value)}
->
-  <option value="Beginner">Beginner</option>
-  <option value="Intermediate">Intermediate</option>
-  <option value="Advanced">Advanced</option>
-</select>
+                         name="proficiency"
+                         className="primaryInput focus"
+                         value={proficiency}
+                         onChange={(e) => setProficiency(e.target.value)}
+                    >
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                    </select>
 
                     <input
                         name="profilePicture"

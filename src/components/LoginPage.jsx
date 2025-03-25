@@ -41,8 +41,6 @@ const LoginPage = ({setUser}) => {
 
     return (
         <div>
-            
-            
             {/* Wrapper div for the title and login form */}
             <div className="login-container">
                 <div className="title-container">

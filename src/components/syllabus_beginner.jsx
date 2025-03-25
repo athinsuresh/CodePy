@@ -103,15 +103,11 @@ const SyllabusBeginner = () => {
 
             {/* Exercises List */}
             <div className="syllabus-exercise-list">
-  {exercises.map((exercise, index) => {
-    console.log("Completed Exercises Array:", completedExercises);
-    const isCompleted = completedExercises.includes(exercise.exerciseLink);
-    const isNextExercise = !isCompleted && index === completedExercises.length;
-    console.log(`Exercise ID: ${exercise.id}`);
-    console.log(`Completed Exercises:`, completedExercises);
-    console.log(`Is Completed: ${isCompleted}`);
-    console.log(`Is Next Exercise: ${isNextExercise}`);
-    return (
+              {exercises.map((exercise, index) => {
+              console.log("Completed Exercises Array:", completedExercises);
+              const isCompleted = completedExercises.includes(exercise.exerciseLink);
+              const isNextExercise = !isCompleted && index === completedExercises.length;
+      return (
       <div key={exercise.id} className="syllabus-exercise-item">
         <div className="syllabus-exercise-info">
           <h4>{exercise.id} {exercise.title}</h4>
@@ -124,9 +120,9 @@ const SyllabusBeginner = () => {
           {isCompleted ? "Completed ✔" : isNextExercise ? "Start →" : "Locked 🔒"}
         </Link>
       </div>
-    );
-  })}
-</div>
+              );
+              })}
+           </div>
 
 
           </div>

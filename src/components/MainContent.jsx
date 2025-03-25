@@ -163,11 +163,11 @@ const MainContent = () => {
             const totalExercises = card.exercises.length;
             const progressPercentage = (completedExercises / totalExercises) * 100;
             const difficultyLevels = ["Beginner", "Intermediate", "Advanced"];
-  const userLevelIndex = difficultyLevels.indexOf(userProficiency);
-  const courseLevelIndex = difficultyLevels.indexOf(card.requiredProficiency);
-  const prevCourseID = cardData[courseLevelIndex - 1]?.courseID;
-const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (cardData[courseLevelIndex - 1]?.exercises.length || 0) : true;
-  const isLocked = courseLevelIndex > userLevelIndex && !prevCourseCompleted; // If course level is higher, lock it
+            const userLevelIndex = difficultyLevels.indexOf(userProficiency);
+            const courseLevelIndex = difficultyLevels.indexOf(card.requiredProficiency);
+            const prevCourseID = cardData[courseLevelIndex - 1]?.courseID;
+            const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (cardData[courseLevelIndex - 1]?.exercises.length || 0) : true;
+            const isLocked = courseLevelIndex > userLevelIndex && !prevCourseCompleted; // If course level is higher, lock it
             return (
               <div
                 className="card"
@@ -176,8 +176,8 @@ const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (car
                   backgroundImage: `url(${card.image})`,
                   backgroundSize: "cover",
                   opacity: isLocked ? 0.6 : 1, // Reduce opacity if locked
-        pointerEvents: isLocked ? "none" : "auto", // Prevent interaction
-        position: "relative",
+                  pointerEvents: isLocked ? "none" : "auto", // Prevent interaction
+                  position: "relative",
                 }}
               >
                 {isLocked && (
@@ -200,11 +200,6 @@ const prevCourseCompleted = prevCourseID ? (progress[prevCourseID] || 0) >= (car
                     ))}
                   </ul>
                 </div>
-
-                {/* Locked Overlay */}
-     
-
-                {/* Progress Bar */}
         
 
                 {/* Card Footer */}

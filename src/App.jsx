@@ -70,7 +70,6 @@ const router = createBrowserRouter(
     { path: "/exercise34", element: <Exercise34 /> },
     { path: "/exercise35", element: <Exercise35 /> },
     { path: "/exercise36", element: <Exercise36 /> },
-    { path: "/ai", element: <Chatbot /> },
   ],
   {
     future: {
