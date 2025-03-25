@@ -1,7 +1,9 @@
 # **CodePy**
 
 ## **Overview**
-[Your App Name] is an interactive coding learning platform designed for beginners, intermediate, and advanced programmers. It features an AI-powered assistant that provides real-time feedback, structured exercises, and a personalized learning experience.
+CodePy is an interactive coding learning platform designed for beginners, intermediate, and advanced programmers. It features an AI-powered assistant that provides real-time feedback, structured exercises, and a personalized learning experience.
+
+The application is deployed using Render and is available at https://codepy-frontend.onrender.com/
 
 ## **Features**
 - **User-Friendly Interface** – Clean and intuitive design for seamless navigation.
@@ -9,6 +11,8 @@
 - **AI Assistance** – Provides real-time feedback, debugging help, and explanations.
 - **Structured Exercises** – Hands-on coding tasks to reinforce learning.
 - **Real-Time Feedback** – Immediate response to errors for faster skill improvement.
+
+## **File Directory Structure**
 
 * 📦 CodePy
     * 📂 **config**: Mongoose and database configuration
